@@ -1,20 +1,8 @@
 import { useState } from "react";
-
+import { movieListOb } from "./movie";
 const App = () => {
 
-  const [movieList, setMovieList] = useState([{
-    id : 1,
-    title : 'Spiderman',
-    year : '2004',
-  }, {
-    id: 2,
-    title : 'How to Train Your Dragon',
-    year : '2012',
-  },{
-    id: 3,
-    title : 'sky',
-    year : '2001',
-  }]);
+  const [movieList, setMovieList] = useState(movieListOb)
 
   function handleDelete(id) {
     setMovieList(movieList.filter((movie) => movie.id !== id ))
@@ -25,11 +13,12 @@ const App = () => {
 
   function handleSubmit (e) {
     e.preventDefault();
-    setMovieList([...movieList, {
-      id : movieList.length + 1,
-      title : movieName,
-      year : movieYear
-    }]);
+    movieName === '' || movieYear === '' ? alert('enter value') :
+      setMovieList([...movieList, {
+        id : movieList.length + 1,
+        title : movieName,
+        year : movieYear
+      }]);
   }
   return (
   <>
